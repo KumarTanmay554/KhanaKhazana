@@ -1,24 +1,8 @@
 import classes from './CartItem.module.css';
-import { incrementInCart,decrementInCart,removefromCart,addToCart } from '../../redux/cartSlice';
-import { useDispatch, useSelector } from 'react-redux';
+
 const CartItem = (props) => {
-//   const cartItems = useSelector((state) => state.cart.items);
-// const totalAmount = useSelector((state) => `$${state.cart.totalAmount.toFixed(2)}`);
-// const dispatch = useDispatch()
-//   const handleAddToCart = (item) => {
-//     dispatch(addToCart(item));
-//   };
-  
-//   const handleRemoveFromCart = (id) => {
-//     dispatch(removefromCart(id));
-//   };
 
-
-
-
-
-
-  const price = `$${props.price.toFixed(2)}`;
+  const price = `Rs${props.price.toFixed(2)}`;
 
   return (
     <li className={classes['cart-item']}>

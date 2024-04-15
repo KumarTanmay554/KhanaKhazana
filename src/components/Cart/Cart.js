@@ -6,13 +6,13 @@ import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
 import useCart from '../../context/context';
 import Checkout from './Checkout';
-import {
-  removefromCart,
-  decrementInCart,
-  incrementInCart,
-  addToCart
-} from "../../redux/cartSlice";
-import { useDispatch, useSelector } from 'react-redux';
+// import {
+//   removefromCart,
+//   decrementInCart,
+//   incrementInCart,
+//   addToCart
+// } from "../../redux/cartSlice";
+// import { useDispatch, useSelector } from 'react-redux';
 
 
 const Cart = (props) => {
@@ -31,7 +31,7 @@ const Cart = (props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submit, setSubmit] = useState(false);
 
-  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const totalAmount = `Rs ${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
 
   const cartItemRemoveHandler = (id) => {

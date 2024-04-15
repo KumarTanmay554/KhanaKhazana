@@ -15,7 +15,7 @@ import CartContext from '../../../store/cart-context';
 const Item = (props) => {
   const cartCtx = useContext(CartContext);
 
-  const price = `$${props.price.toFixed(2)}`;
+  const price = `Rs ${props.price.toFixed(2)}`;
   // const totalAmount = useSelector((state)=>`$${state.cart.totalAmount.toFixed(2)}`)
 
   const addToCartHandler = (amount) => {
