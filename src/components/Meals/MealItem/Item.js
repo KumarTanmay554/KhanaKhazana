@@ -4,19 +4,11 @@ import Form from './Form';
 import classes from './Item.module.css';
 import CartContext from '../../../store/cart-context';
 
-// import {
-//   removefromCart,
-//   decrementInCart,
-//   incrementInCart,
-//   addToCart
-// } from "../../redux/cartSlice";
-// import { useDispatch, useSelector } from 'react-redux';
 
 const Item = (props) => {
   const cartCtx = useContext(CartContext);
 
   const price = `Rs ${props.price.toFixed(2)}`;
-  // const totalAmount = useSelector((state)=>`$${state.cart.totalAmount.toFixed(2)}`)
 
   const addToCartHandler = (amount) => {
     cartCtx.addItem({
@@ -26,11 +18,7 @@ const Item = (props) => {
       price: props.price,
     });
   };
-  // const dispatch = useDispatch();
-
-  // const handleAddToCart = (item) => {
-  //   dispatch(addToCart(item));
-  // };
+;
 
   return (
     <li className={classes.meal}>

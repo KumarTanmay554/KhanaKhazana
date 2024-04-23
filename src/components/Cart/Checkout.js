@@ -6,9 +6,6 @@ import useCart from '../../context/context';
 const isEmpty =(value)=> value.trim() === ''
 const postalCheck = (value)=>value.trim().length === 6
 
-
-
-
 const Checkout = (props) => {
     const {cartShow,hideCart} = useCart()
     const onChangeBtn=()=>{

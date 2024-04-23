@@ -3,14 +3,20 @@ import ReactDOM from 'react-dom';
 
 import classes from './Modal.module.css';
 import useCart from '../../context/context';
+import useLogin from '../../context/contextLogin'
 
 const Backdrop = () => {
 
     const {cartShow,hideCart} = useCart()
+    const {loginShow,hideLogin} = useLogin()
     const onChangeBtn=()=>{
         hideCart()
+        hideLogin()
     }
-  return <div className={classes.backdrop} onClick={onChangeBtn}/>;
+    const onLoginBtn=()=>{
+    }
+
+  return <div className={classes.backdrop} onClick={onChangeBtn} />;
 };
 
 const ModalOverlay = (props) => {
