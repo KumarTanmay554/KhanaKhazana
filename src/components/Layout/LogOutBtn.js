@@ -1,18 +1,16 @@
-import React from 'react'
-import {useDispatch} from 'react-redux'
-import { logout } from '../../auth/authSlice'
-
+import React, { useContext } from 'react'
+import { AuthContext } from '../../auth/authContext'
+import classes from './LogoutBut.module.css'
 
 
 function LogoutBtn() {
-    const dispatch = useDispatch()
+  const {setUser} = useContext(AuthContext)
+    
     const logoutHandler = () => {
-         
-        dispatch(logout())
-        
+        setUser({})
     }
   return (
-    <button
+    <button className={classes.button}
     onClick={logoutHandler}
     >Logout</button>
   )

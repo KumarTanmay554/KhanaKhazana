@@ -4,16 +4,17 @@ import ReactDOM from 'react-dom';
 import classes from './Modal.module.css';
 import useCart from '../../context/context';
 import useLogin from '../../context/contextLogin'
+import useSignup from '../../context/contextSignup';
 
 const Backdrop = () => {
 
     const {cartShow,hideCart} = useCart()
     const {loginShow,hideLogin} = useLogin()
+    const {signShow,hideSignup} = useSignup()
     const onChangeBtn=()=>{
         hideCart()
         hideLogin()
-    }
-    const onLoginBtn=()=>{
+        hideSignup()
     }
 
   return <div className={classes.backdrop} onClick={onChangeBtn} />;

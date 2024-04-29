@@ -1,13 +1,13 @@
 import React from 'react'
-import classes from './SignUpBut.module.css'
-function SignUpBut(props) {
+import classes from './LoginBut.module.css'
+function LoginBut(props) {
   return (
     <button className={classes.button} onClick={props.onClick}>
       <span >
-        SignUp
+        Login
       </span>     
     </button>
   )
 }
 
-export default SignUpBut
+export default LoginBut

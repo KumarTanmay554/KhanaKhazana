@@ -7,7 +7,7 @@
     background-color: #8a2b06;
     color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content:flex-end;
     align-items: center;
     padding: 0 4%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -62,4 +62,16 @@
 .box:hover i{
     opacity: 0;
     z-index: -1;
+}
+.title{
+  text-align: left;
+  position: absolute;
+  z-index: 100;
+  color: white;
+}
+.group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 50px;
 }

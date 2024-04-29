@@ -1,76 +1,71 @@
-import React, { useState } from 'react'
-import useLogin from '../../context/contextLogin'
-import Modal from '../UI/Modal'
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile } from 'firebase/auth'
-import {auth} from '../../auth/firebase'
+import React, { useContext, useState } from "react";
+import useLogin from "../../context/contextLogin";
+import Modal from "../UI/Modal";
+import {createUserWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../../auth/firebase";
+import { AuthContext } from "../../auth/authContext";
+import classes from "./SignUp.module.css";
 
 function SignUp() {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  const {loginShow,hideLogin} = useLogin();
+  const { user, setUser } = useContext(AuthContext);
+  const { loginShow, hideLogin } = useLogin();
 
-  const onChangeBtn=()=>{
-      hideLogin()
-  }
+  const onChangeBtn = () => {
+    hideLogin();
+  };
 
-  
-  const handleSignUp = (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((authUser) => {
-        signInWithEmailAndPassword(auth, email, password).then(
-          updateProfile(auth.currentUser, {
-            displayName: username,
-          })
-        );
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    try {
+      const user = await createUserWithEmailAndPassword(auth, email, password);
+      // await signInWithEmailAndPassword(user, email, password);
+      // await updateProfile(user.currentUser, {
+      //   displayName: username,
+      // });
+      setUser(user.user);
+      hideLogin();
+    } catch (err) {
+      alert(err);
+    }
   };
 
   const modalActions = (
-      <div >
-        <button  onClick={onChangeBtn} >
-          Close
-        </button>
-      </div>
+    <div>
+      <button className={classes.button} onClick={onChangeBtn}>Close </button>
+    </div>
   );
-  const cartModalContent = (
-    <React.Fragment>
-       {modalActions}
-    </React.Fragment>
-  );
+  const cartModalContent = <React.Fragment>{modalActions}</React.Fragment>;
 
   return (
-    <Modal>
-      
-      <input
+    <Modal >
+      <form className={classes.form}>
+      <input className={classes.input}
         onChange={(e) => setEmail(e.target.value)}
         type="email"
         placeholder="Email"
         value={email}
       />
-      <input
+      <input className={classes.input}
         onChange={(e) => setUsername(e.target.value)}
         type="email"
         placeholder="Username"
         value={username}
       />
-      <input
+      <input className={classes.input}
         onChange={(e) => setPassword(e.target.value)}
         type="password"
         placeholder="Password"
         value={password}
       />
-      <button onClick={handleSignUp}>Sign up</button>
-      {cartModalContent}
-
+      <button className={classes.button} onClick={handleSignUp}>Sign up</button>
+      {/* {cartModalContent} */}
+      </form>
     </Modal>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;
